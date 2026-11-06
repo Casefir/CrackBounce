@@ -10,7 +10,7 @@
 [X](https://x.com/CCBlueX)
 </div>
 
-LiquidBounce is a free and open-source mixin-based injection hacked client using the Fabric API for Minecraft.
+LiquidBounce is a free and open-source mixin-based injection hacked client using the Fabric API for Minecraft. This version was forked by @Casefir, which is making this game more cracked (offline account) friendly, also adding new stuff every few days!*
 
 ## Issues
 
@@ -77,3 +77,5 @@ Vahrenwalder Str. 269A
 Germany
 
 **Owner and responsible for the content:** Marco Beyer
+
+*may not be every few days or weeks if dev takes long term breaks
