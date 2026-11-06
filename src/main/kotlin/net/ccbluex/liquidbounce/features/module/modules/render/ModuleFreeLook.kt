@@ -20,16 +20,21 @@
 package net.ccbluex.liquidbounce.features.module.modules.render
 
 import net.ccbluex.liquidbounce.config.types.list.Tagged
+import net.ccbluex.liquidbounce.event.events.GameTickEvent
 import net.ccbluex.liquidbounce.event.events.MouseRotationEvent
+import net.ccbluex.liquidbounce.event.events.NotificationEvent
 import net.ccbluex.liquidbounce.event.events.PerspectiveEvent
 import net.ccbluex.liquidbounce.event.handler
 import net.ccbluex.liquidbounce.features.module.ClientModule
 import net.ccbluex.liquidbounce.features.module.ModuleCategories
 import net.ccbluex.liquidbounce.utils.aiming.utils.RotationUtil
+import net.ccbluex.liquidbounce.utils.client.notification
 import net.ccbluex.liquidbounce.utils.input.InputBind
 import net.minecraft.client.CameraType
 import net.minecraft.client.CameraType.THIRD_PERSON_BACK
 import net.minecraft.client.CameraType.THIRD_PERSON_FRONT
+import net.minecraft.world.level.ClipContext
+import net.minecraft.world.phys.HitResult
 
 object ModuleFreeLook : ClientModule(
     "FreeLook", ModuleCategories.RENDER, disableOnQuit = true, bindAction = InputBind.BindAction.HOLD
@@ -38,6 +43,8 @@ object ModuleFreeLook : ClientModule(
     private val perspective by enumChoice("Perspective", PerspectiveChoice.BACK)
     private val senseBoost by float("SenseBoost", 1f, 0.1f..2f)
     private val noPitchLimit by boolean("NoPitchLimit", true)
+
+    private var reportedNearbyGround = false
 
     var cameraYaw = 0f
     var cameraPitch = 0f
@@ -48,11 +55,35 @@ object ModuleFreeLook : ClientModule(
     override fun onEnabled() {
         cameraYaw = player.yRot
         cameraPitch = player.xRot
+        reportedNearbyGround = false
+    }
+
+    override fun onDisabled() {
+        reportedNearbyGround = false
     }
 
     @Suppress("unused")
     private val handlePerspective = handler<PerspectiveEvent> { event ->
         event.perspective = perspective.perspective
+    }
+
+    @Suppress("unused")
+    private val nearbyGroundNotification = handler<GameTickEvent> {
+        val start = player.position()
+        val end = start.add(0.0, -4.0, 0.0)
+        val groundDetected = world.clip(
+            ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player)
+        ).type == HitResult.Type.BLOCK
+
+        if (groundDetected && !reportedNearbyGround) {
+            notification(
+                "FreeLook",
+                "Ground detected within 4 blocks below. FreeLook is active; footing is not guaranteed.",
+                NotificationEvent.Severity.INFO
+            )
+        }
+
+        reportedNearbyGround = groundDetected
     }
 
     @Suppress("unused")
