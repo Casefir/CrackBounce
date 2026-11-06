@@ -1,9 +1,6 @@
-<div align="center">
-<p>
-    <img width="200" src="https://raw.githubusercontent.com/CCBlueX/LiquidCloud/master/LiquidBounce/liquidbounceLogo.svg">
-</p>
 
-# CrackBounce
+
+# Malico Client
 
 **A community fork of [LiquidBounce](https://github.com/CCBlueX/LiquidBounce)**
 
