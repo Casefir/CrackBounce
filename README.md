@@ -76,10 +76,6 @@ Minecraft client. This way, none of Mojang's copyrighted code is shipped. To lea
 
 Contributions to Malico Client are welcome. Feel free to open an issue or submit a pull request in this repository.
 
-## Stats
-
-![Alt](https://repobeats.axiom.co/api/embed/ad3a9161793c4dfe50934cd4442d25dc3ca93128.svg "Repobeats analytics image")
-
 ## Attribution
 
 Malico Client is a fork of LiquidBounce by CCBlueX. **Made by Casefir.**
