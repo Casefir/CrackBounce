@@ -1,6 +1,6 @@
 <div align="center">
 <p>
-    <img width="200" src="https://raw.githubusercontent.com/CCBlueX/LiquidCloud/master/LiquidBounce/liquidbounceLogo.svg">
+    <img width="200" src="./malico-client.logo-all.png">
 </p>
 
 # Malico Client
@@ -15,7 +15,7 @@
 [X](https://x.com/CCBlueX)
 </div>
 
-Malico Client is a free and open-source, Fabric-based Minecraft client forked from [LiquidBounce](https://github.com/CCBlueX/LiquidBounce) by [@Casefir](https://github.com/Casefir). It retains attribution to the original project and is developed independently.
+Malico Client is a free and open-source, Fabric-based Minecraft client forked from [LiquidBounce](https://github.com/CCBlueX/LiquidBounce) by [@Casefir](https://github.com/Casefir). It retains the same general functionality and design as the project it is based on, with additional improvements and modifications to fit the needs of its community.
 
 ## Issues
 
