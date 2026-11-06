@@ -98,6 +98,8 @@
             </ButtonContainer>
         </div>
     </div>
+
+    <div class="creator-credit">Made by Casefir</div>
 </div>
 
 <style>
@@ -132,5 +134,14 @@
 
     .social-buttons {
         grid-area: c;
+    }
+
+    .creator-credit {
+        position: absolute;
+        right: 12px;
+        bottom: 8px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 11px;
+        pointer-events: none;
     }
 </style>
